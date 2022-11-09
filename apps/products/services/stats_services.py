@@ -10,7 +10,7 @@ class StatsCalculate:
         self.request = request
 
     def calculate(self):
-        response = {'price': round(self.queryset.aggregate(Avg('price')).get('price__avg'), 1)}
+        response = {'price': self.queryset.aggregate(Avg('price')).get('price__avg')}
         if self.request.query_params.get('end_date') and self.request.query_params.get('start_date'):
             end_date = datetime.strptime(self.request.query_params.get('end_date'), '%Y-%m-%d')
             start_date = datetime.strptime(self.request.query_params.get('start_date'), '%Y-%m-%d')
