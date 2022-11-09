@@ -41,7 +41,7 @@ class TestProducts(TestCase):
             'start_date': start_date,
             'end_date': end_date
         })
-        print(response)
+        # print(response.data)
         self.assertEqual(response.status_code, 200)
 
         # Check price calculation
@@ -51,7 +51,6 @@ class TestProducts(TestCase):
         # Check number of days in period
         self.assertIn('days', response.data)
         self.assertEqual(response.data['days'], days)
-
 
     def test_stage_1(self):
         product_id = self._add_product()
